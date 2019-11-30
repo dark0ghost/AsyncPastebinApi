@@ -64,6 +64,15 @@ class Pastebin:
 
     def generate_data(self, paste: str, paste_name: str = None, language: str = "python", paste_date: str = 'N',
                       is_private: str = "0") -> Dict[str, str]:
+        """
+
+        :param paste:
+        :param paste_name:
+        :param language:
+        :param paste_date:
+        :param is_private:
+        :return:
+        """
         self.data: Dict[str, str] = {'api_option': "paste",
                                      'api_dev_key': self.api_dev_key,
                                      'api_paste_private': is_private,
@@ -76,6 +85,11 @@ class Pastebin:
         return self.data
 
     async def send_paste(self, data: Dict[str, str] = None) -> str:
+        """
+
+        :param data:
+        :return:
+        """
         if data is not None:
             async with self.session.post(url=self.api_url, data=self.data) as response:
                 return await response.text(encoding="UTF-8")
@@ -84,6 +98,11 @@ class Pastebin:
                 return await response.text(encoding="UTF-8")
 
     async def open_session(self, proxy: str = None) -> aiohttp.ClientSession:
+        """
+
+        :param proxy:
+        :return:
+        """
         if proxy is None:
             self.session = aiohttp.ClientSession()
             return self.session
@@ -92,5 +111,9 @@ class Pastebin:
         return self.session
 
     async def close(self) -> None:
+        """
+
+        :return:
+        """
         await self.session.close()
         return
