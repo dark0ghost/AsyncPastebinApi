@@ -1,6 +1,8 @@
 # AsyncPastebinApi
-
-#  use async
+__lib allows you to post past__
+# dep 
+**python>=3.7 aiohttp>=3.6 **
+#  use 
 ```python 
 import AsyncPastebinApi
 import asyncio
